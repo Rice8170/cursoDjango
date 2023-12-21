@@ -34,7 +34,7 @@
               <a class="nav-link" href="{% url 'home' %}">Portada</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'about' %}l">Acerca de</a>
+              <a class="nav-link" href="{% url 'about' %}">Acerca de</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'portafolio' %}">Portafolio</a>
@@ -48,21 +48,29 @@
     </nav>
 
     <!-- Cabecera -->
-    <header class="masthead" style="background-image: url('{% static 'Core/img/home-bg.jpg' %}')">
+    <header class="masthead" style="background-image: url('{% block backgroun %} {% endblock %}')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="site-heading">
-              <h1>Juan Pérez</h1>
-              <span class="subheading">Ingeniero Industrial</span>
+              {% block headers %}{% endblock %}
+              
             </div>
           </div>
         </div>
       </div>
     </header>
+    
     <!-- contenido -->
-    {% block content %}{% endblock %}
+    <div class="container">
+      {% block content %}{% endblock  %}
+        
+    </div>
+
+    
+
+    {% if request.path != "/" %} <hr>{% endif %}
 
     <!-- Pié de página -->
     <footer>
